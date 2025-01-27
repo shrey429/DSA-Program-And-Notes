@@ -1,3 +1,6 @@
+https://www.naukri.com/code360/problems/the-earliest-moment-when-everyone-become-friends_1376604
+
+
 # Logic: when we see problems related to connectivity, we should think of applying DSU. 
 # This problem asks us to find the first instance where the graph formed by friendships is connected. 
 # To accomplish this, we'll first sort the friendships by timestamp
