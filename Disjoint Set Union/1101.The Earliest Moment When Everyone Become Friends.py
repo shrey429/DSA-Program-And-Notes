@@ -4,7 +4,6 @@ int findParent(int u, vector<int> &parent){
 	if(u == parent[u]){
 		return u;
 	}
-
 	return parent[u] = findParent(parent[u],parent);
 }
 
@@ -23,11 +22,12 @@ void unionByRank(int u, int v, vector<int> &parent, vector<int> &rank){
 }
 
 vector<int> parent(n);
-	vector<int> rank(n);
-	for(int i=0;i<n;i++){
-		parent[i] = i;
-		rank[i] = 1;
-	}
+vector<int> rank(n);
+for(int i=0;i<n;i++){
+	parent[i] = i;
+	rank[i] = 1;
+}
+
 # Logic: when we see problems related to connectivity, we should think of applying DSU. 
 # This problem asks us to find the first instance where the graph formed by friendships is connected. 
 # To accomplish this, we'll first sort the friendships by timestamp
