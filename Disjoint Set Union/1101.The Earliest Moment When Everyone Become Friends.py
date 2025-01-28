@@ -1,6 +1,33 @@
 https://www.naukri.com/code360/problems/the-earliest-moment-when-everyone-become-friends_1376604
 
+int findParent(int u, vector<int> &parent){
+	if(u == parent[u]){
+		return u;
+	}
 
+	return parent[u] = findParent(parent[u],parent);
+}
+
+void unionByRank(int u, int v, vector<int> &parent, vector<int> &rank){
+	int pu = findParent(u,parent);
+	int pv = findParent(v,parent);
+
+	if(rank[pu] < rank[pv]){
+		parent[pu] = pv;
+	} else if(rank[pv] < rank[pu]){
+		parent[pv] = pu;
+	} else {
+		parent[pu] = pv;
+		rank[pv]++;
+ 	}
+}
+
+vector<int> parent(n);
+	vector<int> rank(n);
+	for(int i=0;i<n;i++){
+		parent[i] = i;
+		rank[i] = 1;
+	}
 # Logic: when we see problems related to connectivity, we should think of applying DSU. 
 # This problem asks us to find the first instance where the graph formed by friendships is connected. 
 # To accomplish this, we'll first sort the friendships by timestamp
